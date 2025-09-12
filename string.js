@@ -32,3 +32,17 @@ let trimmed = aString.trim();
 
 //concat με + ή/και .concat()
 let concatenated = str1 + str2 + aString;  
+
+//RegEx
+
+//Validation
+let strInput = 'hello all'
+if (/hello/.test(strInput)) {   //regex.test()
+    console.log("match found")
+} else {
+    console.log("no match found")
+}; 
+
+let manyTokens = 'world catch hello'; 
+const regex = /w\w+/; 
+let matches = manyTokens.match(regex); 
