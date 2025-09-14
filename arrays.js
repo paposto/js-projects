@@ -29,3 +29,58 @@ arr2.forEach((item, index) => {
     console.log(`Value: ${item}, index: ${index}`);
 });
 
+//Stack-like operations - LIFO
+arr.push(12)    
+let popped = arr.pop()
+
+
+//Queue-like Operations
+arr.shift()     //returns the first elements
+
+//Add to first position
+arr.unshift(5)
+
+//Slice
+const sliced1 = arr.slice(1)
+const sliced2 = arr.slice(1, 3) // startIndex έως endIndex - 1
+const sliced3 = arr.slice() //shallow copy
+
+//Splice delete, insert, update
+arr.splice(2, 1)    //index 2, removes 1 element
+
+arr.splice(2, 0, 3)     //index 2, remove 0, insert 3
+
+arr.splice(2, 2, 1, 4)      //index 2, removes 2, inserts 1 and 5, updating the array
+
+let spliced = arr.lastIndexOf().splice(2, 1)    //returns a new array
+
+//Array includes
+if (arr.includes(3)) {
+    console.log('3 included')
+} else {
+    console.log('not included')
+}; 
+
+//indexOf & lastIndexOf
+const index = arr.indexOf(5, 2);
+if (index === -1) {
+    console.log('Not found')
+} else{
+    console.log('found')
+}
+
+//concat
+let myConcat = arr.concat(arr3)
+
+//spread operator
+let myConcat2 = [...arr, ...arr3]
+
+//min value ενός array
+let minVal = Math.min(...arr)
+let minIndex = arr.indexOf(minVal)
+
+//max value
+let maxVal = Math.max(...arr)
+let maxIndex = arr.indexOf(maxVal)
+
+
