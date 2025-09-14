@@ -43,6 +43,16 @@ if (/hello/.test(strInput)) {   //regex.test()
     console.log("no match found")
 }; 
 
+// g is global flag δηλαδή ελέγχει όλο το string για matches και η matches επιστρέφει όλα τα matches σε πίνακα
+
 let manyTokens = 'world catch hello'; 
 const regex = /w\w+/; 
 let matches = manyTokens.match(regex); 
+console.log(matches); 
+
+// g is global flag δηλαδή ελέγχει όλο το string για matches και η exec επιστρέφει ένα ένα τα matches 
+let match
+while ( (match = regex.exec(manyToken)) !== null) {
+    console.log(`Found '${match}' at index ${match.index}`)
+}; 
+
