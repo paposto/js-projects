@@ -83,4 +83,11 @@ let minIndex = arr.indexOf(minVal)
 let maxVal = Math.max(...arr)
 let maxIndex = arr.indexOf(maxVal)
 
+//Destructuring
+let grid = [1, 2]
+let [x, y] = grid   //x _> 1, y -> 2
+
+let [first, second, ...rest] = arr;     //rest oprator
+ 
+
 
