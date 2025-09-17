@@ -61,7 +61,7 @@ function display3DPoint(point) {
 }
 
 // With destructing - not verbose 
-function display3DPoint(x, y, z = 'Not provided') {
+function display3DPoint2(x, y, z = 'Not provided') {
     console.log(`x: ${x}`)
     console.log(`x: ${y}`)
     console.log(`x: ${z}`)
