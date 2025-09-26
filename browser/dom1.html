@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="outer">
+
+    </div>
+
+    <script>
+        // Reference to .outer div element
+        const outerDOM = document.querySelector('.outer')
+
+        // Create img element
+        const imgElement = document.createElement('img')
+        imgElement.src = '../img/Logo1.png'
+        imgElement.alt = 'Coding Factory Logo'
+        
+        //Append στο DOM 
+        outerDOM.appendChild(imgElement)
+    </script>
+</body>
+</html>
