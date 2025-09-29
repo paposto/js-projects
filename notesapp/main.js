@@ -17,4 +17,21 @@ window.addEventListener('DOMContentLoaded', function() {
             onInsertHandler({key: count + 1, note: document.querySelector('#inputNote'.ariaValueMax.trim()), softDelete:false})
         }
     })
+
+    function printGrDate() {
+        const currentDate = new Date()
+        const day = currentDate.getDay()
+        const date = currentDate.getDate()
+        const month = currentDate.getMonth()
+        const year = currentDate.getFullYear()
+        const hours = currentDate.getHours()
+        const minutes = currentDate.getMinutes()
+        const seconds = currentDate.getSeconds()
+
+        const dayStr = daysGR[day]
+        const monthStr = monthsGR[month]
+
+        const dateStr = `${dayStr}, ${date} ${monthStr} ${year}`
+        const timeStr = `${(hours < 10) ? '0' : ''}${hours}:${(minutes < 10) ? '0' : ''}${minutes}${(seconds < 10) ? '0' : ''}${seconds}`
+    }
 })
