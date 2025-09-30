@@ -59,7 +59,7 @@ window.addEventListener('DOMContentLoaded', function() {
 
         container.innerHTML = notes.map(note => `<div id="${'noteTemplate' + note.key}" class="flex justify-between item-center px-[2px] border-b border=black">
             
-                <div>
+                <div id="${'noteInfo' + note.key}" class="flex item-center">
                     <input type="checkbox" id="${'noteCheck' + note.key}" onclick="strikeThrough(${note.ke})" class="w-[25px] h-[25px] mr-[5px]" ${note.softDeleted ? 'checked': ''}>
                     <label id="${'noteTxt + note.key'}" for="${'noteCheck' + note.key}" class="w-[200px] max-h-[150px] overflow-hidden break-words whitespace-normal text-base ${note.softDeleted ? 'line-through text-gray-500' : ''}">${note.note}</label>
             </div>
