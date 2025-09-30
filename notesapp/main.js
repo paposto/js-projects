@@ -1,5 +1,8 @@
 const daysGR = ['Κυριακή', 'Δευτέρα', 'Τρίτη', 'Τετάρτη', 'Πέμπτη', 'Παρασκευή', 'Σάββατο']
-const monthsGR = ['Ιανουαρίου', 'Φεβρουαρίου', 'Απριλίου', 'Μαιου', 'Ιουνίου', 'Ιουλίου', 'Αυγούστου, Σεπτεμβρίου', 'Οκτωβρίου', 'Νοεμβρίου', 'Δεκεμβρίου']
+const monthsGR = [
+  'Ιανουαρίου', 'Φεβρουαρίου', 'Μαρτίου', 'Απριλίου', 'Μαΐου', 'Ιουνίου',
+  'Ιουλίου', 'Αυγούστου', 'Σεπτεμβρίου', 'Οκτωβρίου', 'Νοεμβρίου', 'Δεκεμβρίου'
+]
 
 let notes = []
 let count = 0 
@@ -9,12 +12,20 @@ window.addEventListener('DOMContentLoaded', function() {
     this.setInterval(() => printGrDate(), 1000)
 
     this.document.querySelector('#addNoteBtn').addEventListener('click', function() {
-        onInsertHandler({key: count + 1, note: document.querySelector('#inputNote'.ariaValueMax.trim()), softDelete:false})
+        onInsertHandler({
+          key: count + 1, 
+          note: document.querySelector('#inputNote').value.trim(), 
+          softDeleted: false
+        })
     })
 
     this.document.querySelector('#inputNote').addEventListener('keyup', function(e){
         if (e.key === 'Enter') {
-            onInsertHandler({key: count + 1, note: document.querySelector('#inputNote'.ariaValueMax.trim()), softDelete:false})
+            onInsertHandler({
+              key: count + 1, 
+              note: document.querySelector('#inputNote').value.trim(), 
+              softDeleted: false
+            })
         }
     })
 
@@ -32,7 +43,7 @@ window.addEventListener('DOMContentLoaded', function() {
         const monthStr = monthsGR[month]
 
         const dateStr = `${dayStr}, ${date} ${monthStr} ${year}`
-        const timeStr = `${(hours < 10) ? '0' : ''}${hours}:${(minutes < 10) ? '0' : ''}${minutes}${(seconds < 10) ? '0' : ''}${seconds}`
+        const timeStr = `${(hours < 10) ? '0' : ''}${hours}:${(minutes < 10) ? '0' : ''}${minutes}:${(seconds < 10) ? '0' : ''}${seconds}`
 
         document.querySelector('#dateTxt').innerHTML = `${dateStr}<br>${timeStr}`
     }
@@ -40,7 +51,6 @@ window.addEventListener('DOMContentLoaded', function() {
     // Controller
     function onInsertHandler(obj) {
         if (!obj?.note) return 
-
         insertNote(obj)
         reset()
     }
@@ -49,24 +59,43 @@ window.addEventListener('DOMContentLoaded', function() {
     function insertNote(obj) {
         notes = [...notes, obj]
         count++
-        
         renderNotes()
     }
     
     // View
     function renderNotes() {
         const container = document.querySelector('#notesWrapper')
-
-        container.innerHTML = notes.map(note => `<div id="${'noteTemplate' + note.key}" class="flex justify-between item-center px-[2px] border-b border=black">
-            
-                <div id="${'noteInfo' + note.key}" class="flex item-center">
-                    <input type="checkbox" id="${'noteCheck' + note.key}" onclick="strikeThrough(${note.ke})" class="w-[25px] h-[25px] mr-[5px]" ${note.softDeleted ? 'checked': ''}>
-                    <label id="${'noteTxt + note.key'}" for="${'noteCheck' + note.key}" class="w-[200px] max-h-[150px] overflow-hidden break-words whitespace-normal text-base ${note.softDeleted ? 'line-through text-gray-500' : ''}">${note.note}</label>
+    
+        container.innerHTML = notes.map(note => `
+            <div id="${'noteTemplate' + note.key}" class="flex justify-between items-center px-[2px] border-b border-black">
+                
+                <div>
+                    <input 
+                        type="checkbox" 
+                        id="${'noteCheck' + note.key}" 
+                        onclick="strikeThrough(${note.key})" 
+                        class="w-[25px] h-[25px] mr-[5px]" 
+                        ${note.softDeleted ? 'checked': ''}>
+                        
+                    <label 
+                        id="${'noteTxt' + note.key}" 
+                        for="${'noteCheck' + note.key}" 
+                        class="w-[200px] max-h-[150px] overflow-hidden break-words whitespace-normal text-base ${note.softDeleted ? 'line-through text-gray-500' : ''}">
+                        ${note.note}
+                    </label>
+                </div>
+                
+                <button 
+                    type="button" 
+                    id="${'noteDelBtn' + note.key}" 
+                    class="w-[35px] h-[35px] border border-black rounded-full" 
+                    onclick="deleteNote(${note.key})">
+                    X
+                </button>
             </div>
-            <button type="button" id="${'noteDelBtn' + note.key}" class="w-[35px] h-[35px] border border-black rounded-full" onclick=:deketeNote(${note.key})">X</button>
-             
-        </div>`).join("")
+        `).join("")
     }
+    
 
     // Model
     function strikeThrough(key) {
