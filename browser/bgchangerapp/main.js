@@ -22,6 +22,7 @@ function getBgColor() {
     return colors[Math.floor(Math.random() * colors.length)]
 }
 
+// View
 function renderBg() {
     document.getElementById('color').innerHTML = color 
     document.body.style.backgroundColor = color
