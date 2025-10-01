@@ -41,14 +41,14 @@ function increaseCounter() {
 // View
 
 function render() {
-    const counterDOM = document.guerySelector('#counter')
+    const counterDOM = document.querySelector('#counter')
     counterDOM.textContent = counter
     styleCounter(counterDOM)
 }
 
 function styleCounter(counterDOM) {
-    counterDOM.classlist.toggle('color-green', counter > 0)
-    counterDOM.classlist.toggle('color-red', counter < 0)
-    counterDOM.classlist.toggle('color-black', counter === 0)
+    counterDOM.classList.toggle('color-green', counter > 0)
+    counterDOM.classList.toggle('color-red', counter < 0)
+    counterDOM.classList.toggle('color-black', counter === 0)
 
 }
