@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "../.."
+		},
+		{
+			"path": "../../../cf8-html/img"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "js-projects"
+	}
+}
